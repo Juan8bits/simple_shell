@@ -80,13 +80,14 @@ int main(void)
 		else
 		{
 			av = get_pointers_array(line, delim);
-
+	
 			while (av[prueba])
 			{
-				printf("%s", av[prueba]);
+				printf("%s[%d]\n", av[prueba], prueba);
 				prueba++;
 			}
 			prueba = 0;
+			new_process(av);
 		}
 	}
 	free(line);

@@ -10,6 +10,9 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 
+extern char **environ;
+
+int new_process(char **argument);
 
 
 #endif
