@@ -13,9 +13,11 @@
 
 /* Environment variables */
 extern char **environ;
+char *_getenv(char *name);
 
 /* Functions for strings */
 int _strlen(char *string);
+int _strcmp(char *s1, char *s2);
 char **get_pointers_array(char *line, char *limit);
 
 /* Create and execute new process */

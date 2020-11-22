@@ -1,15 +1,22 @@
 #include "header.h"
 
 /**
- * which_conc - Function that search an a given command in $PATH and concatenate
- *  it with the directory.
- * @route: Pointer to string.
- * Return: 1 on succesful,
+ * status_exec -
  */
-size_t which_conc(char *route)
+
+void status_exec(char **argum)
 {
-	(void) route;
-	return(0);
+	struct stat buf;
+
+	if (stat(argum[0], &buf) == 0)
+	{
+		if (execve(argum[0], argum, environ) == -1)
+		{
+			perror("./shell");
+			_exit(0);
+		}
+	}
+	return;
 }
 
 /**
@@ -21,10 +28,13 @@ size_t which_conc(char *route)
 int new_process(char **argument)
 {
 	pid_t pid;
-	struct stat buf;
-	/*char *set[] = {" ", NULL};*/
-	pid = fork();
+	char *P = "PATH";
+	char *limit =  ":\n";
+	char *_environ = NULL;
+	char **_path = NULL;
+	int prueba = 0;
 
+	pid = fork();
 	if (pid < 0)
 	{
 		perror("./shell");
@@ -32,27 +42,26 @@ int new_process(char **argument)
 	}
 	if (pid == 0)
 	{
-		if (stat(argument[0], &buf) == 0)
+		status_exec(argument);
+
+		_environ = _getenv(P);
+
+		_path = get_pointers_array(_environ, limit);
+
+		while (_path[prueba])
 		{
-			if (execve(argument[0], argument, environ) == -1)
-			{
-				perror("./shell");
-				_exit(0);
-			}
+			printf("[%d]%s\n", prueba, _path[prueba]);
+			prueba++;
 		}
-		else
+		prueba = 0;
+		/*
+		while (_path[i])
 		{
-			if (which_conc(argument[0]) == 1)
-			{
-				if (execve(argument[0], argument, environ) == -1)
-				{
-					perror("./shell");
-					_exit(0);
-				}
-			}
-			perror("./shell");
-			_exit(0);
-		}
+		concat_route(_path[i], argument[0])
+		}*/
+		perror("./shell");
+		_exit(0);
+
 	}
 	else
 	{
