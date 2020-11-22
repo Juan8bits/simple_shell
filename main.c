@@ -59,7 +59,7 @@ int main(void)
 {
 	char *line = NULL;
 	char *prompt = "#cisfun$ ";
-	char *delim = " ";
+	char *delim = " \n";
 	char **av = NULL;
 	size_t size_line = 0;
 	ssize_t retgetline = 0;
@@ -80,10 +80,10 @@ int main(void)
 		else
 		{
 			av = get_pointers_array(line, delim);
-	
+
 			while (av[prueba])
 			{
-				printf("%s[%d]\n", av[prueba], prueba);
+				printf("[%d]%s\n", prueba, av[prueba]);
 				prueba++;
 			}
 			prueba = 0;
