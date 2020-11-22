@@ -91,6 +91,5 @@ int main(void)
 		}
 	}
 	free(line);
-	free(av);
 	return (0);
 }

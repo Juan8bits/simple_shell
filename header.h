@@ -11,9 +11,14 @@
 #include <fcntl.h>
 #include <errno.h>
 
+/* Environment variables */
 extern char **environ;
 
-int new_process(char **argument);
+/* Functions for strings */
+int _strlen(char *string);
+char **get_pointers_array(char *line, char *limit);
 
+/* Create and execute new process */
+int new_process(char **argument);
 
 #endif
