@@ -1,8 +1,20 @@
 #include "header.h"
 
+int _strlen(char *s)
+{
+	int z;
+
+	while (s[z] != '\0')
+		z++;
+	return (z);
+}
 /**
- * _strcmp
- *
+ * _strcmp - Functiont that compare two strings
+ * @s1: String to compare 1.
+ * @s2: String to compare 2.
+ * Return: if Return value < 0 then it indicates str1 is less than str2.
+ *	if Return value > 0 then it indicates str2 is less than str1.
+ *	if Return value = 0 then it indicates str1 is equal to str2.
 */
 
 int _strcmp(char *s1, char *s2)
@@ -18,29 +30,45 @@ int _strcmp(char *s1, char *s2)
         }
         return (rest);
 }
+/**
+ * _strcat - Function that concatenates two strings
+ * @dest: string concatenates
+ * @src: string source
+ * Return: dest
+ */
+
+char *_strcat(char *dest, char *src)
+{
+	short int i, j;
+
+	i = 0, j = 0;
+	while (dest[i] != '\0')
+		i++;
+	while (src[j] != '\0')
+	{
+		dest[i] = src[j];
+		j++;
+		i++;
+	}
+	return (dest);
+}
 
 /**
- * _getenv - 
- * @name: Name of enviroment variale.
- * Return: Pointer to environ variable founded.
-*/
-char *_getenv(char *name)
-{
-        int size, i = 0;
-        unsigned int n;
-        char *retvalue = NULL;
+ * _strcpy - copy strings
+ * @dest: destiny string
+ * @src: source string
+ * Return: dest
+ */
 
-        for (size = 0; name[size] != '\0'; size++)
-                ;
-        while (environ[i])
-        {
-                n = _strcmp(name, environ[i]);
-                if (n == 0)
-                {
-                        retvalue = environ[i];
-                        break;
-                }
-                i++;
-        }
-        return (retvalue);
+char *_strcpy(char *dest, char *src)
+{
+	short int leng;
+
+	while (src[leng] != '\0')
+	{
+		dest[leng] = src[leng];
+		leng++;
+	}
+	dest[leng] = '\0';
+	return (dest);
 }

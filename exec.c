@@ -1,7 +1,34 @@
 #include "header.h"
-
 /**
- * status_exec -
+ * _getenv - Function that searches the first characters of the environment
+ * for a string.
+ * @name: Name of enviroment variale.
+ * Return: Pointer to environ variable finded.
+ */
+char *_getenv(char *name)
+{
+        int size, i = 0;
+        unsigned int n;
+        char *retvalue = NULL;
+
+        for (size = 0; name[size] != '\0'; size++)
+                ;
+        while (environ[i])
+        {
+                n = _strcmp(name, environ[i]);
+                if (n == 0)
+                {
+                        retvalue = environ[i];
+                        break;
+                }
+                i++;
+        }
+        return (retvalue);
+}
+/**
+ * status_exec - Function that asks for the existence of
+ * a file and if it exists executes it.
+ * @argume: Pointer to pointers array.
  */
 
 void status_exec(char **argum)
@@ -20,7 +47,7 @@ void status_exec(char **argum)
 }
 
 /**
- * new_process - This function
+ * new_process - Function that create a new child process.
  * @argument: Double pointer to pointers array.
  * Return: int number.
  */
@@ -29,10 +56,10 @@ int new_process(char **argument)
 {
 	pid_t pid;
 	char *P = "PATH";
-	char *limit =  ":\n";
-	char *_environ = NULL;
+	char *limit =  ":=\n";
+	char *_environ = NULL, *conc = NULL;
 	char **_path = NULL;
-	int prueba = 0;
+	short int dir = 1;
 
 	pid = fork();
 	if (pid < 0)
@@ -43,22 +70,20 @@ int new_process(char **argument)
 	if (pid == 0)
 	{
 		status_exec(argument);
-
 		_environ = _getenv(P);
-
 		_path = get_pointers_array(_environ, limit);
-
-		while (_path[prueba])
+/*while (_path[prueba])
+{
+printf("[%d]%s\n", prueba, _path[prueba]);
+prueba++;
+}
+prueba = 0;*/	while (_path[dir])
 		{
-			printf("[%d]%s\n", prueba, _path[prueba]);
-			prueba++;
+			conc = concat_route(_path[dir], argument[0]);
+			argument[0] = conc;
+			status_exec(argument);
+			dir++;
 		}
-		prueba = 0;
-		/*
-		while (_path[i])
-		{
-		concat_route(_path[i], argument[0])
-		}*/
 		perror("./shell");
 		_exit(0);
 
