@@ -44,7 +44,7 @@ int main(void)
 {
 	char *line = NULL;
 	char *prompt = "#cisfun$ ";
-	char *delim = " \n";
+	char *delim = " \t\n";
 	char **av = NULL;
 	size_t size_line = 0;
 	ssize_t retgetline = 0;
