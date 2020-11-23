@@ -7,28 +7,28 @@
  */
 char *_getenv(char *name)
 {
-        int size, i = 0;
-        unsigned int n;
-        char *retvalue = NULL;
+	int size, i = 0;
+	unsigned int n = 0;
+	char *retvalue = NULL;
 
-        for (size = 0; name[size] != '\0'; size++)
-                ;
-        while (environ[i])
-        {
-                n = _strcmp(name, environ[i]);
-                if (n == 0)
-                {
-                        retvalue = environ[i];
-                        break;
-                }
-                i++;
-        }
-        return (retvalue);
+	for (size = 0; name[size] != '\0'; size++)
+		;
+	while (environ[i])
+	{
+		n = _strcmp(name, environ[i]);
+		if (n == 0)
+		{
+			retvalue = environ[i];
+			break;
+		}
+		i++;
+	}
+	return (retvalue);
 }
 /**
  * status_exec - Function that asks for the existence of
  * a file and if it exists executes it.
- * @argume: Pointer to pointers array.
+ * @argum: Pointer to pointers array.
  */
 
 void status_exec(char **argum)
@@ -43,7 +43,6 @@ void status_exec(char **argum)
 			_exit(0);
 		}
 	}
-	return;
 }
 
 /**
@@ -54,43 +53,39 @@ void status_exec(char **argum)
 
 int new_process(char **argument)
 {
+	struct stat buf;
 	pid_t pid;
-	char *P = "PATH";
-	char *limit =  ":=\n";
-	char *_environ = NULL, *conc = NULL;
+	char *P = "PATH", *limit =  ":=\n", *_environ = NULL, *conc = NULL;
 	char **_path = NULL;
-	short int dir = 1;
+	int dir = 1;
 
 	pid = fork();
 	if (pid < 0)
-	{
-		perror("./shell");
+	{	perror("./shell");
 		return (-1);
 	}
 	if (pid == 0)
-	{
-		status_exec(argument);
+	{	status_exec(argument);/*When the route is given in argument[0]*/
+/*If child process don´t finish before, it´s going*/
+/*to search if the argument[0] could be there in $PATH.*/
 		_environ = _getenv(P);
 		_path = get_pointers_array(_environ, limit);
-/*while (_path[prueba])
-{
-printf("[%d]%s\n", prueba, _path[prueba]);
-prueba++;
-}
-prueba = 0;*/	while (_path[dir])
-		{
-			conc = concat_route(_path[dir], argument[0]);
-			argument[0] = conc;
-			status_exec(argument);
+		while (_path[dir])
+		{	conc = _pathcat(_path[dir], argument[0]);
+			if (stat(conc, &buf) == 0)
+			{	argument[0] = conc;
+				status_exec(argument);
+			}
+			free(conc);
 			dir++;
 		}
+/*If the argument[0] doesn´t exist, it´s going*/
+/*to search in buit-in functions*/
 		perror("./shell");
 		_exit(0);
-
 	}
 	else
-	{
-		wait(0);
+	{	wait(0);
 		free(argument);
 	}
 	return (0);

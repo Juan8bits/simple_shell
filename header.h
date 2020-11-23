@@ -25,5 +25,6 @@ char *_pathcat(char *argument, char *route);
 
 /* Create and execute new process */
 int new_process(char **argument);
+void status_exec(char **argument);
 
 #endif

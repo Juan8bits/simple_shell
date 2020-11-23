@@ -1,25 +1,11 @@
 #include "header.h"
 
 /**
- * _strlen - !!!!!!!!!!!
- * @s:
- * Return: size of string.
- */
-
-int _strlen(char *s)
-{
-	int z = 0;
-
-	while (s[z] != '\0')
-		z++;
-	return (z);
-}
-
-/**
- * get_pointers_array - !!!!
- * @limit:
- * @line:
- * Return:
+ * get_pointers_array - Function that become a string in
+ * pointers array separated by limit variable.
+ * @limit: Limit character.
+ * @line: Pointer to string to separate.
+ * Return: Pointer to pointers array.
  */
 
 char **get_pointers_array(char *line, char *limit)
@@ -50,8 +36,7 @@ char **get_pointers_array(char *line, char *limit)
 }
 
 /**
- * main -
- *
+ * main - Main function
  * Return: 0 on succesfull
  */
 
@@ -63,30 +48,26 @@ int main(void)
 	char **av = NULL;
 	size_t size_line = 0;
 	ssize_t retgetline = 0;
-	int prueba = 0;
 
 	while (1)
 	{
 		write(STDOUT_FILENO, prompt, _strlen(prompt));
 		retgetline = getline(&line, &size_line, stdin);
-
-		if (retgetline == EOF)
+		/*
+		 *if (retgetline == EOF)
+		 *{
+		 *	write(STDOUT_FILENO, "\n", 1);
+		 *	break;
+		 *}
+		*/
+		if (retgetline == -1)
 		{
 			write(STDOUT_FILENO, "\n", 1);
 			break;
 		}
-		if (retgetline == -1)
-			perror("ERROR: ");
 		else
 		{
 			av = get_pointers_array(line, delim);
-
-			while (av[prueba])
-			{
-				printf("[%d]%s\n", prueba, av[prueba]);
-				prueba++;
-			}
-			prueba = 0;
 			new_process(av);
 		}
 	}

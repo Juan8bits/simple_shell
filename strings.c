@@ -1,5 +1,11 @@
 #include "header.h"
 
+/**
+ * _strlen - Return the length of a string
+ * @s: string given.
+ * Return: z
+ */
+
 int _strlen(char *s)
 {
 	int z = 0;
@@ -19,16 +25,16 @@ int _strlen(char *s)
 
 int _strcmp(char *s1, char *s2)
 {
-        unsigned int i = 0, rest = 0;
+	unsigned int i = 0, rest = 0;
 
-        while (s1[i] != 0 && s2[i] != 0) /*&& s1[i] == s2[i])*/
-        {
-                rest = s1[i] - s2[i];
-                if (rest != 0)
-                        break;
-                i++;
-        }
-        return (rest);
+	while (s1[i] != 0 && s2[i] != 0)
+	{
+		rest = s1[i] - s2[i];
+		if (rest != 0)
+			break;
+		i++;
+	}
+	return (rest);
 }
 /**
  * _strcat - Function that concatenates two strings
@@ -39,7 +45,7 @@ int _strcmp(char *s1, char *s2)
 
 char *_strcat(char *dest, char *src)
 {
-	short int i, j;
+	unsigned int i, j;
 
 	i = 0, j = 0;
 	while (dest[i] != '\0')
@@ -50,6 +56,7 @@ char *_strcat(char *dest, char *src)
 		j++;
 		i++;
 	}
+	dest[i] = '\0';
 	return (dest);
 }
 
@@ -62,7 +69,7 @@ char *_strcat(char *dest, char *src)
 
 char *_strcpy(char *dest, char *src)
 {
-	short int leng;
+	unsigned int leng = 0;
 
 	while (src[leng] != '\0')
 	{
@@ -71,4 +78,26 @@ char *_strcpy(char *dest, char *src)
 	}
 	dest[leng] = '\0';
 	return (dest);
+}
+
+/**
+ * _pathcat - Function that concatenates the variables passed path
+ * and argument and returns a pointer with the content.
+ * @argument: Program without route.
+ * @route: Route of path.
+ * Return: Pointer to new concatenate string.
+ */
+char *_pathcat(char *argument, char *route)
+{
+	char *conc = NULL;
+	char *c = "/";
+
+	conc = malloc(_strlen(argument) + _strlen(route) + 2);
+
+	if (!conc)
+		return (NULL);
+	conc = _strcpy(conc, argument);
+	conc = _strcat(conc, c);
+	conc = _strcat(conc, route);
+	return (conc);
 }
