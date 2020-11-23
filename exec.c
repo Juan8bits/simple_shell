@@ -40,7 +40,7 @@ void status_exec(char **argum)
 		if (execve(argum[0], argum, environ) == -1)
 		{
 			perror("./shell");
-			_exit(0);
+			_exit(EXIT_FAILURE);
 		}
 	}
 }
@@ -61,10 +61,8 @@ int new_process(char **argument)
 
 	pid = fork();
 	if (pid < 0)
-	{	perror("./shell");
-		return (-1);
-	}
-	if (pid == 0)
+		perror("./shell");
+	else if (pid == 0)
 	{	status_exec(argument);/*When the route is given in argument[0]*/
 /*If child process don´t finish before, it´s going*/
 /*to search if the argument[0] could be there in $PATH.*/
@@ -82,11 +80,11 @@ int new_process(char **argument)
 /*If the argument[0] doesn´t exist, it´s going*/
 /*to search in buit-in functions*/
 		perror("./shell");
-		_exit(0);
+		_exit(EXIT_FAILURE);
 	}
 	else
 	{	wait(0);
 		free(argument);
 	}
-	return (0);
+	return (1);
 }

@@ -51,19 +51,21 @@ int main(void)
 
 	while (1)
 	{
-		write(STDOUT_FILENO, prompt, _strlen(prompt));
+		if (isatty(STDIN_FILENO) != 0)
+			write(STDOUT_FILENO, prompt, _strlen(prompt));
 		retgetline = getline(&line, &size_line, stdin);
-		/*
-		 *if (retgetline == EOF)
-		 *{
-		 *	write(STDOUT_FILENO, "\n", 1);
-		 *	break;
-		 *}
-		*/
+
+		if (retgetline == EOF)
+		{
+			if (isatty(STDIN_FILENO) != 0)
+				write(STDOUT_FILENO, "\n", 1);
+			exit(EXIT_SUCCESS);
+		}
+
 		if (retgetline == -1)
 		{
 			write(STDOUT_FILENO, "\n", 1);
-			break;
+			perror("./shell");
 		}
 		else
 		{
@@ -72,5 +74,5 @@ int main(void)
 		}
 	}
 	free(line);
-	return (0);
+	return (EXIT_SUCCESS);
 }
