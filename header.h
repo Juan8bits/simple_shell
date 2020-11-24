@@ -11,9 +11,11 @@
 #include <fcntl.h>
 #include <errno.h>
 
-/* Environment variables */
+/* Environment variables and Function´s */
 extern char **environ;
 char *_getenv(char *name);
+char **search_in_path(char **arr);
+
 
 /* Functions for strings */
 int _strlen(char *string);
