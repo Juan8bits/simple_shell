@@ -14,13 +14,13 @@ In this project we investigate, understand and develop a basic replica of a UNIX
 ## Simple Shell files:
 
 File   Description
->header.h	Header file that contains all the functions and standard C library header file
+> - header.h	Header file that contains all the functions and standard C library header file
 >
->main.c		Contains the int main(void) function and a function that become a string in pointers array separated by limit variable: get pointer array.
+> - main.c		Contains the int main(void) function and a function that become a string in pointers array separated by limit variable: get pointer array.
 >
->exec.c		Contains the functions that handle the environment, path/file verification, and child process functions: getevn, status exec, new process.
+> - exec.c		Contains the functions that handle the environment, path/file verification, and child process functions: getevn, status exec, new process.
 >
->strings.c Contains all helper functions: _strlen, strcmp, strcat, strncpy,_pathcat
+> - strings.c Contains all helper functions: _strlen, strcmp, strcat, strncpy,_pathcat
 	  
 	  
 ## **How to Install**
@@ -113,6 +113,6 @@ Simple Shell was built and tested in the Ubuntu 14.04 LTS via Vagrant in Virtual
 
 ## **Authors** 
 
-[Juan Manuel Ramirez Zaa](https://github.com/Juan8bits)
-[Carolina Hernandez Viveros](https://github.com/CarolinaHV)
+Juan Manuel Ramirez Saa - [*Juan8bits*](https://github.com/Juan8bits)\
+Carolina Hernandez Viveros - [*CarolinaHV*](https://github.com/CarolinaHV)
 
