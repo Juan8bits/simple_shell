@@ -6,21 +6,21 @@
 
 ## **Description**
 
-Simple Shell is an end-of-term collaborative project conducted by students Juanma and Caro para de Holberton School Cali.
+In this project we investigated, understood, and developed a basic clone of a UNIX shell that performs shell (sh) functionalities. This program was written in C language.
 
-In this project we investigate, understand and develop a basic replica of a UNIX command interpreter that performs the shell (sh) functionalities. This program was written in C language.
+Simple Shell is an end-of-term collaborative project conducted by Juan Manuel Ramirez Saa and Carolina Hernandez Viveros for Holberton School Cali.
 
 # **Respository**
 ## Simple Shell files:
 
-File   Description
-> - header.h	Header file that contains all the functions and standard C library header file
+>    File                                 Description
+> - header.h\. Header file that contains all the functions and standard C libraries.
 >
-> - main.c		Contains the int main(void) function and a function that become a string in pointers array separated by limit variable: get pointer array.
+> - main.c\. Contains the int main(void) function and a function that become a string in pointers array separated by limit variable: get pointer array.
 >
-> - exec.c		Contains the functions that handle the environment, path/file verification, and child process functions: getevn, status exec, new process.
+> - exec.c\. Contains the functions that handle the environment, path/file verification, and child process functions: getevn, status exec, new process.
 >
-> - strings.c Contains all helper functions: _strlen, strcmp, strcat, strncpy,_pathcat
+> - strings.c\. Contains all helper functions to manipulate strings or characters: _strlen, strcmp, strcat, strncpy,_pathcat
 	  
 	  
 ## **How to Install**
@@ -35,11 +35,11 @@ Clone the repo below
 
 After compilation, the resulting program can run stand-alone, either in interactive or non-interactive mode.
 
-## **Interactive Mode**
+### **Interactive Mode**
 
 In interactive mode, simply run the program and wait for the prompt to appear. From there, type commands freely, exiting with either the "exit" command or ctrl-D.
 
-## **Non-Interactive Mode**
+### **Non-Interactive Mode**
 
 In non-interactive mode, echo desired command and pipe it into the program as following:
 echo "ls" | ./hsh
@@ -113,6 +113,6 @@ Simple Shell was built and tested in the Ubuntu 14.04 LTS via Vagrant in Virtual
 
 ## **Authors** 
 
-Juan Manuel Ramirez Saa - [*Juan8bits*](https://github.com/Juan8bits)\
-Carolina Hernandez Viveros - [*CarolinaHV*](https://github.com/CarolinaHV)
+**Juan Manuel Ramirez Saa** - [*Juan8bits*](https://github.com/Juan8bits)\
+**Carolina Hernandez Viveros** - [*CarolinaHV*](https://github.com/CarolinaHV)
 
