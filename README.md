@@ -4,16 +4,14 @@
 
 # **SIMPLE SHELL**
 
-## **Description**
+## **Description:memo:**
 
 In this project we investigated, understood, and developed a basic clone of a UNIX shell that performs shell (sh) functionalities. This program was written in C language.
 
 Simple Shell is an end-of-term collaborative project conducted by Juan Manuel Ramirez Saa and Carolina Hernandez Viveros for Holberton School Cali.
 
-# **Respository**
-## Simple Shell files:
+## **Respository / Simple shell files and description:bookmark_tabs:**
 
->    File                                 Description
 > - header.h\. Header file that contains all the functions and standard C libraries.
 >
 > - main.c\. Contains the int main(void) function and a function that become a string in pointers array separated by limit variable: get pointer array.
@@ -23,13 +21,13 @@ Simple Shell is an end-of-term collaborative project conducted by Juan Manuel Ra
 > - strings.c\. Contains all helper functions to manipulate strings or characters: _strlen, strcmp, strcat, strncpy,_pathcat
 	  
 	  
-## **How to Install**
+## **How to Install:computer:**
 
 Clone the repo below
 
 `https://github.com/Juan8bits/simple_shell.git` 
 
-## **How to Compile**
+## **How to Compile:desktop_computer:**
 
 `gcc -Wall -Werror -Wextra -pedantic *.c header.h -o hsh`
 
@@ -45,8 +43,8 @@ In non-interactive mode, echo desired command and pipe it into the program as fo
 echo "ls" | ./hsh
 In non-interactive mode, the program will exit after finishing desired command(s).
 
-## **Example Output interactive mode**
-```
+## **Example Output Interactive Mode**
+```Git Bash
 vagrant@vagrant-ubuntu-trusty-64:~/Holberton/simple_shell$ gcc *.c header.h -o hsh
 vagrant@vagrant-ubuntu-trusty-64:~/Holberton/simple_shell$ ./hsh
 #cisfun$ pwd
@@ -79,7 +77,7 @@ drwxrwxr-x  8 vagrant vagrant  4096 Nov 23 20:22 .git
 -rw-rw-r--  1 vagrant vagrant  1809 Nov 23 15:45 strings.c
 ```
 
-## **Example Output Non-interactive mode**
+## **Example Output Non-Interactive Mode**
 ```
 vagrant@vagrant-ubuntu-trusty-64:~/Holberton/simple_shell$ gcc *.c header.h -o hsh
 vagrant@vagrant-ubuntu-trusty-64:~/Holberton/simple_shell$ echo pwd | ./hsh
@@ -107,12 +105,13 @@ Carolina Hernandez Viveros <carolina.hv02@gmail.com>
 Juan Manuel Ramírez Saa <Juan160820@gmail.com>
 ```
 
-## **Resource**
+## **Resource:card_index:**
 
 Simple Shell was built and tested in the Ubuntu 14.04 LTS via Vagrant in VirtualBox and compiled with GCC version 4.8.4
 
-## **Authors** 
+## **Authors:writing_hand:** 
 
-**Juan Manuel Ramirez Saa** - [*Juan8bits*](https://github.com/Juan8bits)\
-**Carolina Hernandez Viveros** - [*CarolinaHV*](https://github.com/CarolinaHV)
+**Juan Manuel Ramirez Saa:man_technologist:** - [*Juan8bits*](https://github.com/Juan8bits)\
+**Carolina Hernandez Viveros:woman_technologist:** - [*CarolinaHV*](https://github.com/CarolinaHV)
 
+[ ](https://img.shields.io/github/status/s/pulls/Juan8bits/simple_shell/1111)
