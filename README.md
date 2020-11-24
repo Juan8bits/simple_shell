@@ -1,3 +1,11 @@
+**____ ____ ____ ____ ____ ____       **
+**||S |||I |||M |||P |||L |||E ||     **
+**||__|||__|||__|||__|||__|||__||     **
+**|/__\|/__\|/__\|/__\|/__\|/__\|____ **
+**||       |||S |||H |||E |||L |||L ||**
+**||_______|||__|||__|||__|||__|||__||**
+**|/_______\|/__\|/__\|/__\|/__\|/__\|**
+
 ![SHELL BASIC](/images/varios/s_b.jpg)
 
 -------------------------------------------------
@@ -49,11 +57,11 @@ In non-interactive mode, the program will exit after finishing desired command(s
 ```
 vagrant@vagrant-ubuntu-trusty-64:~/Holberton/simple_shell$ gcc *.c header.h -o hsh
 vagrant@vagrant-ubuntu-trusty-64:~/Holberton/simple_shell$ ./hsh
-\#cisfun$ pwd
+#cisfun$ pwd
 /home/vagrant/Holberton/simple_shell
-\#cisfun$ /bin/pwd
+#cisfun$ /bin/pwd
 /home/vagrant/Holberton/simple_shell
-\#cisfun$ ls -la
+#cisfun$ ls -la
 total 52
 drwxrwxr-x  3 vagrant vagrant  4096 Nov 24 00:31 .
 drwxrwxr-x 12 vagrant vagrant  4096 Nov 23 15:45 ..
@@ -65,7 +73,7 @@ drwxrwxr-x  8 vagrant vagrant  4096 Nov 23 20:22 .git
 -rw-rw-r--  1 vagrant vagrant  1476 Nov 23 20:47 main.c
 -rw-rw-r--  1 vagrant vagrant   136 Nov 23 23:54 README.md
 -rw-rw-r--  1 vagrant vagrant  1809 Nov 23 15:45 strings.c
-\#cisfun$ /bin/ls -l -a
+#cisfun$ /bin/ls -l -a
 total 52
 drwxrwxr-x  3 vagrant vagrant  4096 Nov 24 00:31 .
 drwxrwxr-x 12 vagrant vagrant  4096 Nov 23 15:45 ..
