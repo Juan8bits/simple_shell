@@ -29,10 +29,10 @@ char *cd_func(char *pr)
  */
 char *wrong_built(__attribute__((unused))char *pr)
 {
-	return('\0');
+	return ('\0');
 }
 /**
- * get_built_func - Function to redirec a pointer to function 
+ * get_built_func - Function to redirec a pointer to function
  * depending to argument given.
  * @pr: Argument given to compare with the buit-in.
  * Return: pr on fail, end of the process on succesful.
@@ -46,11 +46,12 @@ char *(*get_built_func(char *gu))(char *)
 		{"wrong", wrong_built}
 	};
 	int i = 0;
-	while( builts[i].indic != '\0')
+
+	while (builts[i].indic != '\0')
 	{
-		if ( strcmp(gu, builts[i].indic) == 0)
+		if (_strcmp(gu, builts[i].indic) == 0)
 		{
-			return(builts[i].function);
+			return (builts[i].function);
 		}
 		i++;
 	}

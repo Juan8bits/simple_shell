@@ -7,28 +7,28 @@
  */
 char **search_in_path(char **arr)
 {
-        struct stat buf;
-        char *P = "PATH";
-        char *limit =  ":=\n";
-        char *_environ = NULL;
-        char *conc = NULL;
-        char **_path = NULL;
-        unsigned int dir = 1;
+	struct stat buf;
+	char *P = "PATH";
+	char *limit =  ":=\n";
+	char *_environ = NULL;
+	char *conc = NULL;
+	char **_path = NULL;
+	unsigned int dir = 1;
 
-        _environ = _getenv(P);
-        _path = get_pointers_array(_environ, limit);
-        while (_path[dir])
-        {
-                conc = _pathcat(_path[dir], arr[0]);
-                if (stat(conc, &buf) == 0)
-                {
-                        arr[0] = conc;
-                        status_exec(arr);
-                }
-                free(conc);
-                dir++;
-        }
-        return (arr);
+	_environ = _getenv(P);
+	_path = get_pointers_array(_environ, limit);
+	while (_path[dir])
+	{
+		conc = _pathcat(_path[dir], arr[0]);
+		if (stat(conc, &buf) == 0)
+		{
+			arr[0] = conc;
+			status_exec(arr);
+		}
+		free(conc);
+		dir++;
+	}
+	return (arr);
 }
 /**
  * _getenv - Function that searches the first characters of the environment
@@ -94,8 +94,8 @@ int new_process(char **argument)
 	{
 		/* Search the argument in PATH*/
 		argument = search_in_path(argument);
-		/*if the arugment doesn´t exist in PATH, search in
-		 * current directory*/
+		/*if the arugment doesn´t exist in PATH, search in*/
+		/* current directory*/
 		status_exec(argument);
 		/*Add built_in search*/
 		perror("./shell");
