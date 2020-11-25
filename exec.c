@@ -102,8 +102,8 @@ int new_process(char **argument)
 			ptrret = search_in_path(argument);
 			if (!ptrret)
 			{
-				/*if the arugment doesn´t exist in PATH,
-				 *search in current directory*/
+				/*if the arugment doesn´t exist in PATH,*/
+				/*search in current directory*/
 				status_exec(argument);
 			}
 			perror("./shell");

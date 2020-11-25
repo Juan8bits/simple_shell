@@ -62,13 +62,12 @@ int main(void)
 				write(STDOUT_FILENO, "\n", 1);
 			exit(EXIT_SUCCESS);
 		}
-
-		if (retgetline == -1)
+		else if (retgetline == -1)
 		{
 			write(STDOUT_FILENO, "\n", 1);
 			perror("./shell");
 		}
-		else
+		else if (*line != 10)
 		{
 			av = get_pointers_array(line, delim);
 			status = new_process(av);

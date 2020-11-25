@@ -24,6 +24,7 @@ typedef struct builtins_func
 } built;
 
 /* Functios for Built-in commands*/
+int env_func(__attribute__((unused))char **p);
 int exit_func(__attribute__((unused))char **pr);
 int cd_func(char **pr);
 int wrong_built(__attribute__((unused))char **pr);
