@@ -12,11 +12,22 @@
 #include <errno.h>
 
 /* Structure for function pointers to Built-in commands*/
+/**
+ * struct builtins_func - Structure for function pointers to Built-in commands
+ * @indic: Command given.
+ * @function: The function associated to command given.
+ */
 typedef struct builtins_func
 {
-        char *indic;
-        char *(*function)(char *arg);
+	char *indic;
+	char *(*function)(char *);
 } built;
+
+/* Functios for Built-in commands*/
+char *exit_func(char *pr);
+char *cd_func(char *pr);
+char *wrong_built(__attribute__((unused))char *pr);
+char *(*get_built_func(char *gu))(char *);
 
 /* Environment variables and Function´s */
 extern char **environ;
