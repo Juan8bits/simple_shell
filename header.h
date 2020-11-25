@@ -11,6 +11,13 @@
 #include <fcntl.h>
 #include <errno.h>
 
+/* Structure for function pointers to Built-in commands*/
+typedef struct builtins_func
+{
+        char *indic;
+        char *(*function)(char *arg);
+} built;
+
 /* Environment variables and Function´s */
 extern char **environ;
 char *_getenv(char *name);
