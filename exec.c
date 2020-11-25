@@ -112,8 +112,9 @@ int new_process(char **argument)
 		else
 		{
 			wait(0);
-			free(argument);
+			/*free(argument);*/
 		}
 	}
+	free(argument);
 	return (status);
 }

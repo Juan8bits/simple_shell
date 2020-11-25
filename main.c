@@ -58,6 +58,7 @@ int main(void)
 
 		if (retgetline == EOF)
 		{
+			free(line);
 			if (isatty(STDIN_FILENO) != 0)
 				write(STDOUT_FILENO, "\n", 1);
 			exit(EXIT_SUCCESS);
