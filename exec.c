@@ -1,6 +1,34 @@
 #include "header.h"
 
 /**
+ * check_path - 
+ * @route: Pointer to path variable.
+ * Return: Pointer to new modify path or older path.
+ */
+char *check_path(char *route)
+{
+	unsigned int i, j = 0;
+	char *newroute = NULL;
+
+	if (route[5] == ':')
+	{
+		newroute = malloc(sizeof(char) * _strlen(route) + 2);
+		for(i = 0; route[i]; j++, i++)
+		{
+			newroute[j] = route[i];
+			if (route[i + 1] == ':' && i == 4)
+			{
+				newroute[i + 1] = '.';
+				j++;
+			}
+		}
+		newroute[j] = '\0';
+		return (newroute);
+	}
+	return (route);
+
+}
+/**
  * search_in_path - Function that find the command (arr[0]) in PATH
  * @arr: Pointer to pointers array that contains the commands given.
  * Return: Double pointer.
@@ -16,17 +44,21 @@ char **search_in_path(char **arr)
 	unsigned int dir = 1;
 
 	_environ = _getenv(P);
-	_path = get_pointers_array(_environ, limit);
-	while (_path[dir])
+	if (_environ && _strlen(_environ) > 5)
 	{
-		conc = _pathcat(_path[dir], arr[0]);
-		if (stat(conc, &buf) == 0)
+		_environ = check_path(_environ);
+		_path = get_pointers_array(_environ, limit);
+		while (_path[dir])
 		{
-			arr[0] = conc;
-			status_exec(arr);
+			conc = _pathcat(_path[dir], arr[0]);
+			if (stat(conc, &buf) == 0)
+			{
+				arr[0] = conc;
+				status_exec(arr);
+			}
+			free(conc);
+			dir++;
 		}
-		free(conc);
-		dir++;
 	}
 	return (NULL);
 }
@@ -38,21 +70,20 @@ char **search_in_path(char **arr)
  */
 char *_getenv(char *name)
 {
-	int size, i = 0;
-	unsigned int n = 0;
+	unsigned int i = 0, n = 0;
 	char *retvalue = NULL;
 
-	for (size = 0; name[size] != '\0'; size++)
-		;
-	while (environ[i])
-	{
-		n = _strcmp(name, environ[i]);
-		if (n == 0)
+	if (environ)
+	{	while (environ[i])
 		{
-			retvalue = environ[i];
-			break;
+			n = _strcmp(name, environ[i]);
+			if (n == 0)
+			{
+				retvalue = environ[i];
+				break;
+			}
+			i++;
 		}
-		i++;
 	}
 	return (retvalue);
 }
@@ -106,6 +137,7 @@ int new_process(char **argument)
 				/*search in current directory*/
 				status_exec(argument);
 			}
+			free(argument);
 			perror("./shell");
 			_exit(EXIT_FAILURE);
 		}

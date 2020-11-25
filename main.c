@@ -10,7 +10,6 @@
 
 char **get_pointers_array(char *line, char *limit)
 {
-/*const char limit[2] = " ";*/
 	int i;/*Runer*/
 	int contsp = 0;/*Counter limit*/
 	char **array = NULL;

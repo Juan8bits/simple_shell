@@ -34,6 +34,7 @@ int (*get_built_func(char **gu))(char **);
 extern char **environ;
 char *_getenv(char *name);
 char **search_in_path(char **arr);
+char *check_path(char *route);
 
 
 /* Functions for strings */

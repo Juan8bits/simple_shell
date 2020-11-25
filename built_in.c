@@ -46,7 +46,6 @@ int cd_func(char **pr)
 			perror("./shell:");
 	}
 	return (1);
-
 }
 
 /**
