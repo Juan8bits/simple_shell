@@ -1,0 +1,80 @@
+. \ Página de manual de _printf.
+.\  Contact 2418@holbertonschool.com to correct errors sor tipos.
+.TH man 3 27 October 2020 1.0 _printf man page
+.SH NAME
+_printf  Format and print  our own data
+.SH SYPNOPSIS
+_printf FORMAT [ARGUMENT]
+_printf OPTION
+#include \"Holberton.h\"
+.br
+.SH DESCRIPTION
+Print ARGUMENT(s) according to FORMAT, or execute according to OPTION:
+
+--help display this help and exit
+.br
+FORMAT  controls  the  output  as  in  C  printf.    Interpreted sequences are:
+
+.B \"
+-double quote
+.br
+.B \\
+-backslash
+.br
+.B \a
+- Alert (BEL)
+.br
+.B \b
+- Backspace
+.br
+.B \c
+- Produce no further output
+.br
+.B \e
+- Escape
+.br
+.B \f
+- Form feed
+.br
+.B \n
+- New line
+.br
+.B \r
+- Carriage return
+.br
+.B \t
+- Horizontal tab
+.br
+.B \v
+- Vertical tab
+.br
+.B %%
+- A single % (equals to \%)
+.br
+.B %b
+- Binary expresión of a signed int
+.br
+.SH The conversion specifier
+A character that specifies the type of conversion to be applied.
+The conversion specifiers and their meanings are  :
+.br
+.B d, i
+The int argument is converted to signed decimal notation.
+The precision, if any, gives the minimum number of digits that must appear; if the converted value  requires  fewer digits, it is padded on the left with zeros.  The default precision is 1.  When 0 is printed with an explicit  precision 0, the output is empty.
+.br
+.SH Return value
+Upon successful return, these functions return the number of characaters printed (excluding the null byte used to end output to strings). Return -1 if fail.
+.br
+.SH SEE ALSO
+Printf(3)
+.br
+.SH AUTHOR
+Written by Carolina Hernandez, Juan Ramírez and Soren Acevedo.
+.br
+.SH BUGS
+
+Report the errors of this function to the mail 2418@holbertonschool.com
+Please do not use different amount of indicators to the arguments passed to the function and vice versa.
+.br
+.SH COPYRIGHT
+Copyright Fabricious 2020 for HolbertonSchool Colombia.
