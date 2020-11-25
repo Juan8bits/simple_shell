@@ -48,8 +48,9 @@ int main(void)
 	char **av = NULL;
 	size_t size_line = 0;
 	ssize_t retgetline = 0;
+	int status = 1;
 
-	while (1)
+	while (status)
 	{
 		if (isatty(STDIN_FILENO) != 0)
 			write(STDOUT_FILENO, prompt, _strlen(prompt));
@@ -70,7 +71,7 @@ int main(void)
 		else
 		{
 			av = get_pointers_array(line, delim);
-			new_process(av);
+			status = new_process(av);
 		}
 	}
 	free(line);

@@ -28,7 +28,7 @@ char **search_in_path(char **arr)
 		free(conc);
 		dir++;
 	}
-	return (arr);
+	return (NULL);
 }
 /**
  * _getenv - Function that searches the first characters of the environment
@@ -86,25 +86,34 @@ void status_exec(char **argum)
 int new_process(char **argument)
 {
 	pid_t pid;
+	int status = 0;
+	char **ptrret = NULL;
 
-	pid = fork();
-	if (pid < 0)
-		perror("./shell");
-	else if (pid == 0)
+	/* Search in built_in commands*/
+	status = get_built_func(argument)(argument);
+	if (status == 2)
 	{
-		/* Search the argument in PATH*/
-		argument = search_in_path(argument);
-		/*if the arugment doesn´t exist in PATH, search in*/
-		/* current directory*/
-		status_exec(argument);
-		/*Add built_in search*/
-		perror("./shell");
-		_exit(EXIT_FAILURE);
+		pid = fork();
+		if (pid < 0)
+			perror("./shell");
+		else if (pid == 0)
+		{
+			/* Search the argument in PATH*/
+			ptrret = search_in_path(argument);
+			if (!ptrret)
+			{
+				/*if the arugment doesn´t exist in PATH,
+				 *search in current directory*/
+				status_exec(argument);
+			}
+			perror("./shell");
+			_exit(EXIT_FAILURE);
+		}
+		else
+		{
+			wait(0);
+			free(argument);
+		}
 	}
-	else
-	{
-		wait(0);
-		free(argument);
-	}
-	return (1);
+	return (status);
 }

@@ -20,14 +20,14 @@
 typedef struct builtins_func
 {
 	char *indic;
-	char *(*function)(char *);
+	int (*function)(char **);
 } built;
 
 /* Functios for Built-in commands*/
-char *exit_func(char *pr);
-char *cd_func(char *pr);
-char *wrong_built(__attribute__((unused))char *pr);
-char *(*get_built_func(char *gu))(char *);
+int exit_func(__attribute__((unused))char **pr);
+int cd_func(char **pr);
+int wrong_built(__attribute__((unused))char **pr);
+int (*get_built_func(char **gu))(char **);
 
 /* Environment variables and Function´s */
 extern char **environ;
