@@ -104,6 +104,10 @@ vagrant@vagrant-ubuntu-trusty-64:~/Holberton/simple_shell$ echo cat AUTHORS | ./
 Carolina Hernandez Viveros <carolina.hv02@gmail.com>
 Juan Manuel Ramírez Saa <Juan160820@gmail.com>
 ```
+## Flow Chart Shell
+
+![](https://i.ibb.co/4KnrWfq/Flowchart-Shell.jpg)
+
 
 ## **Resource:card_index:**
 
