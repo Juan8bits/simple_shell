@@ -4,9 +4,12 @@
 .B simple_shell
 - Basic command line interpreter.
 .SH SYPNOPSIS
+
 .B hsh
+.TP
 .B file_name (feature disabled) 
 .SH DESCRIPTION
+
 .Nm
 It is a basic command interpreter for the operating system. It allows communication between the Unix distribution and the user.
 It has two modes of operation. Interactive and non-interactive.
@@ -17,6 +20,7 @@ This version has many features which make it appear similar in some respects to 
 but it is not a Bash shell clone (see.Xr sh 1 ) .
 .Nm
 .SH Overview
+
 The shell is a command that reads lines from either a file or the
 terminal, interprets them, and generally executes other commands.
 It is the program that is running when a user logs into the system
@@ -32,38 +36,46 @@ has the advantage that the interpretative language is common to both
 interactive and non-interactive use (shell scripts).
 
 .SH EXAMPLE
+
 .Nm
 Interactive Mode:
 .Nm
-.B code
+.TP
+.B
+.TP
 $ ./hsh
+.TP
 #Cisfun$ /bin/pwd
+.TP
 /home/vagrant/simple_shell
+.TP
 #Cisfun$
+.TP
 #Cisfun$ exit
+.TP
 $
 .TP
 .Nm
 Non-interactive mode:
 .Nm
-.B code:
+.B
 $ echo "/bin/ls" | ./hsh
-.B Output:
+.B
 .TP
 AUTHORS     header.h     README.md     built_in.c     main.c
 .TP
 hsh     exec.c      man_1_simple_shell     strings.c
 .TP
-.B code
+.B
 $
 $ echo "gcc *.c header.h -o hsh" | ./hsh
-.B Output:
+.B
 .TP
 $
 .TP
-.B code
+.B
 $ cat test
-.B Output:
+.B
 .TP
 /bin/pwd
 .TP
@@ -71,25 +83,27 @@ pwd
 .TP
 $
 .TP
-.B code
+.B
 $ cat test | ./hsh
-.B Output:
+.B
 .TP
 /home/vagrant/simple_shell
 .TP
 /home/vagrant/simple_shell
 .TP
 $
-.TP
+
 .SH Return value
 
 Exit status at the end of a run.
 .SH SEE ALSO
-.I Run  man /bin/sh.
-.br
+
+Run  man /bin/sh.
 .SH NOTES
+
 Does not allow handling of special characters, logical operators or command history.
 .SH BUGS
 No known bugs.
 .SH AUTHORS
-- Carolina Hernandez and Juan Manuel Ramírez.
+
+-Carolina Hernandez and Juan Manuel Ramírez.
