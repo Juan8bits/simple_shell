@@ -5,12 +5,12 @@
 .B simple_shell
 - Basic command line interpreter.
 .SH SYPNOPSIS
-.TP
+
 .B hsh
 .TP
 .B file_name (feature disabled) 
 .SH DESCRIPTION
-.TP
+
 .Nm
 It is a basic command interpreter for the operating system. It allows communication between the Unix distribution and the user.
 It has two modes of operation. Interactive and non-interactive.
@@ -21,7 +21,7 @@ This version has many features which make it appear similar in some respects to 
 but it is not a Bash shell clone (see.Xr sh 1 ) .
 .Nm
 .SH Overview
-.TP
+
 The shell is a command that reads lines from either a file or the
 terminal, interprets them, and generally executes other commands.
 It is the program that is running when a user logs into the system
@@ -39,7 +39,7 @@ has the advantage that the interpretative language is common to both
 interactive and non-interactive use (shell scripts).
 
 .SH EXAMPLE
-.TP
+
 .Nm
 Interactive Mode:
 .Nm
@@ -102,14 +102,14 @@ $
 
 Exit status at the end of a run.
 .SH SEE ALSO
-.TP
+
 Run  man /bin/sh.
 .SH NOTES
-.TP
+
 Does not allow handling of special characters, logical operators or command history.
 .SH BUGS
-.TP
+
 No known bugs.
 .SH AUTHORS
-.TP
+
 Carolina Hernandez and Juan Manuel Ramírez.
