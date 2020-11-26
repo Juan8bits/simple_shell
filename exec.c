@@ -130,6 +130,7 @@ int new_process(char **argument)
 	pid_t pid;
 	int status = 0;
 	char **ptrret = NULL;
+	char *line = NULL;
 
 	/* Search in built_in commands*/
 	status = get_built_func(argument)(argument);
@@ -151,6 +152,8 @@ int new_process(char **argument)
 			/*search in current directory*/
 			status_exec(argument);
 		}
+		line = argument[0];
+		free(line);
 		free(argument);
 		perror("./shell");
 		_exit(EXIT_FAILURE);

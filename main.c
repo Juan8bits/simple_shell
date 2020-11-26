@@ -70,6 +70,7 @@ int main(void)
 		else if (*line != 10)
 		{
 			av = get_pointers_array(line, delim);
+			printf("line: %p\n av[0]: %p\n", line, av[0]);
 			status = new_process(av);
 		}
 	}
