@@ -128,40 +128,41 @@ void status_exec(char **argum)
 int new_process(char **argument)
 {
 	pid_t pid;
-	int status = 0;
+	int status = 1;
 	char **ptrret = NULL;
 	char *line = NULL;
 
 	/* Search in built_in commands*/
-	status = get_built_func(argument)(argument);
-	if (status != 2)
+	if (argument[0])
 	{
-		free(argument);
-		return (status);
-	}
-	pid = fork();
-	if (pid < 0)
-		perror("./shell");
-	else if (pid == 0)
-	{
-		/* Search the argument in PATH*/
-		ptrret = search_in_path(argument);
-		if (!ptrret)
+		status = get_built_func(argument)(argument);
+		if (status != 2)
 		{
-			/*if the arugment doesn´t exist in PATH,*/
-			/*search in current directory*/
-			status_exec(argument);
+			free(argument);
+			return (status);
 		}
-		line = argument[0];
-		free(line);
-		free(argument);
-		perror("./shell");
-		_exit(EXIT_FAILURE);
+		pid = fork();
+		if (pid < 0)
+			perror("./shell");
+		else if (pid == 0)
+		{
+			/* Search the argument in PATH*/
+			ptrret = search_in_path(argument);
+			if (!ptrret)
+			{
+				/*if the arugment doesn´t exist in PATH,*/
+				/*search in current directory*/
+				status_exec(argument);
+			}
+			line = argument[0];
+			free(line);
+			free(argument);
+			perror("./shell");
+			_exit(EXIT_FAILURE);
+		}
+		else
+			wait(0);
 	}
-	else
-	{
-		wait(0);
-		free(argument);
-	}
+	free(argument);
 	return (status);
 }

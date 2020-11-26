@@ -1,5 +1,9 @@
 #include "header.h"
 
+/**
+ * sig_handler - Function called when an interrupt signal happen
+ * @sig_c: Value of interrupt signal.
+ */
 void sig_handler(int sig_c)
 {
 	if (sig_c == SIGINT)
@@ -21,13 +25,17 @@ char **get_pointers_array(char *line, char *limit)
 	char **array = NULL;
 
 /*Count limit char*/
-	for (i = 0; line[i] != 0; i++)
+	for (i = 0; line[i] && line; i++)
 	{
 		if (line[i] == limit[0])
 			contsp++;
 	}
 /*Allocate memory*/
 	array = malloc(sizeof(char *) * (contsp + 2));
+	if (!array)
+	{
+		return (NULL);
+	}
 /*Full array*/
 	array[0] = strtok(line, limit);
 	for (i = 1; i <= contsp; i++)
