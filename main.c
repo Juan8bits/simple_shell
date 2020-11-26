@@ -1,5 +1,11 @@
 #include "header.h"
 
+void sig_handler(int sig_c)
+{
+	if (sig_c == SIGINT)
+		write(STDOUT_FILENO, "\n", 11);
+}
+
 /**
  * get_pointers_array - Function that become a string in
  * pointers array separated by limit variable.
@@ -49,6 +55,7 @@ int main(void)
 	ssize_t retgetline = 0;
 	int status = 1;
 
+	signal(SIGINT, sig_handler);
 	while (status)
 	{
 		if (isatty(STDIN_FILENO) != 0)
