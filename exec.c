@@ -1,7 +1,7 @@
 #include "header.h"
 
 /**
- * check_path - 
+ * check_path - Function that chekc if path its pk.
  * @route: Pointer to path variable.
  * Return: Pointer to new modify path or older path.
  */
@@ -13,7 +13,7 @@ char *check_path(char *route)
 	if (route[5] == ':')
 	{
 		newroute = malloc(sizeof(char) * _strlen(route) + 2);
-		for(i = 0; route[i]; j++, i++)
+		for (i = 0; route[i]; j++, i++)
 		{
 			newroute[j] = route[i];
 			if (route[i + 1] == ':' && i == 4)
@@ -39,14 +39,21 @@ char **search_in_path(char **arr)
 	char *P = "PATH";
 	char *limit =  ":=\n";
 	char *_environ = NULL;
+	char *_newenviron = NULL;
 	char *conc = NULL;
 	char **_path = NULL;
 	unsigned int dir = 1;
+	unsigned int flag = 0;
 
 	_environ = _getenv(P);
 	if (_environ && _strlen(_environ) > 5)
 	{
-		_environ = check_path(_environ);
+		_newenviron = check_path(_environ);
+		if (_strcmp(_newenviron, _environ) != 0)
+		{
+			_environ = _newenviron;
+			flag = 1;
+		}
 		_path = get_pointers_array(_environ, limit);
 		while (_path[dir])
 		{
@@ -54,11 +61,14 @@ char **search_in_path(char **arr)
 			if (stat(conc, &buf) == 0)
 			{
 				arr[0] = conc;
+				if (flag == 1)
+					free(_environ);
 				status_exec(arr);
 			}
 			free(conc);
 			dir++;
 		}
+		free(_path);
 	}
 	return (NULL);
 }
@@ -74,7 +84,8 @@ char *_getenv(char *name)
 	char *retvalue = NULL;
 
 	if (environ)
-	{	while (environ[i])
+	{
+		while (environ[i])
 		{
 			n = _strcmp(name, environ[i]);
 			if (n == 0)
@@ -122,31 +133,32 @@ int new_process(char **argument)
 
 	/* Search in built_in commands*/
 	status = get_built_func(argument)(argument);
-	if (status == 2)
+	if (status != 2)
 	{
-		pid = fork();
-		if (pid < 0)
-			perror("./shell");
-		else if (pid == 0)
-		{
-			/* Search the argument in PATH*/
-			ptrret = search_in_path(argument);
-			if (!ptrret)
-			{
-				/*if the arugment doesn´t exist in PATH,*/
-				/*search in current directory*/
-				status_exec(argument);
-			}
-			free(argument);
-			perror("./shell");
-			_exit(EXIT_FAILURE);
-		}
-		else
-		{
-			wait(0);
-			/*free(argument);*/
-		}
+		free(argument);
+		return (status);
 	}
-	free(argument);
+	pid = fork();
+	if (pid < 0)
+		perror("./shell");
+	else if (pid == 0)
+	{
+		/* Search the argument in PATH*/
+		ptrret = search_in_path(argument);
+		if (!ptrret)
+		{
+			/*if the arugment doesn´t exist in PATH,*/
+			/*search in current directory*/
+			status_exec(argument);
+		}
+		free(argument);
+		perror("./shell");
+		_exit(EXIT_FAILURE);
+	}
+	else
+	{
+		wait(0);
+		free(argument);
+	}
 	return (status);
 }
