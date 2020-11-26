@@ -4,18 +4,19 @@
 .B simple_shell
 - Basic command line interpreter.
 .SH SYPNOPSIS
-.Nm hsh
-.Op file_name (feature disabled)
-.B 
+.B hsh
+.B file_name (feature disabled) 
 .SH DESCRIPTION
 .Nm
 It is a basic command interpreter for the operating system. It allows communication between the Unix distribution and the user.
 It has two modes of operation. Interactive and non-interactive.
 Look at the examples for more information.
+.Nm
+.Nm
 This version has many features which make it appear similar in some respects to the Bash shell,
 but it is not a Bash shell clone (see.Xr sh 1 ) .
 .Nm
-.Ss Overview
+.SH Overview
 The shell is a command that reads lines from either a file or the
 terminal, interprets them, and generally executes other commands.
 It is the program that is running when a user logs into the system
@@ -29,64 +30,66 @@ capabilities.
 It incorporates many features to aid interactive use and
 has the advantage that the interpretative language is common to both
 interactive and non-interactive use (shell scripts).
-That is, commands
-can be typed directly to the running shell or can be put into a file and
-the file can be executed directly by the shell.
+
 .SH EXAMPLE
 .Nm
 Interactive Mode:
-.It
+.Nm
+.B code
 $ ./hsh
-.It
 #Cisfun$ /bin/pwd
-.It
 /home/vagrant/simple_shell
-.It
 #Cisfun$
-.It
 #Cisfun$ exit
-.It
 $
-.Pp
+.TP
+.Nm
 Non-interactive mode:
-.It
+.Nm
+.B code:
 $ echo "/bin/ls" | ./hsh
-.It
+.B Output:
+.TP
 AUTHORS     header.h     README.md     built_in.c     main.c
+.TP
 hsh     exec.c      man_1_simple_shell     strings.c
-.It
+.TP
+.B code
 $
-.It
 $ echo "gcc *.c header.h -o hsh" | ./hsh
-.It
+.B Output:
+.TP
 $
-.It
+.TP
+.B code
 $ cat test
-.It
+.B Output:
+.TP
 /bin/pwd
-.It
+.TP
 pwd
-.It
+.TP
 $
-.It
+.TP
+.B code
 $ cat test | ./hsh
-.It
+.B Output:
+.TP
 /home/vagrant/simple_shell
-.It
+.TP
 /home/vagrant/simple_shell
-.It
+.TP
 $
+.TP
 .SH Return value
-Exit status at the end of a run
-.SH SEE ALSO
-.I man /bin/sh
 
+Exit status at the end of a run.
+.SH SEE ALSO
+.I Run  man /bin/sh.
 .br
 .SH NOTES
-Does not allow handling of special characters, logical operators or command history
+Does not allow handling of special characters, logical operators or command history.
 .SH BUGS
 No known bugs.
 .SH AUTHORS
--Carolina Hernandez
-.An
--Juan Manuel Ramírez.
+- Carolina Hernandez and Juan Manuel Ramírez.
