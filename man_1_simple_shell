@@ -1,5 +1,4 @@
 .TH man 3 "25 November 2020" "1.0" "simple_shell man page"
-.Dd 25 November 2020
 .Os Ubuntu_Linux 14.04.
 .SH NAME
 .B simple_shell
