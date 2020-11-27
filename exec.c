@@ -46,7 +46,6 @@ char **search_in_path(char **arr)
 	unsigned int flag = 0;
 
 	_environ = _getenv(P);
-	printf("%s\n", _environ);
 	if (_environ && _strlen(_environ) > 5)
 	{
 		_newenviron = check_path(_environ);
