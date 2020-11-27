@@ -10,7 +10,7 @@ int env_func(__attribute__((unused))char **pr)
 	unsigned int j;
 
 	for (j = 0; environ[j]; j++)
-		printf("%s\n", environ[j]);
+		_puts(environ[j]);
 	return (1);
 }
 /**
@@ -38,12 +38,12 @@ int cd_func(char **pr)
 		home = _getenv(_home);
 		home += 5;
 		if (chdir(home) != 0)
-			perror("./shell:");
+			perror("./hsh:");
 	}
 	else
 	{
 		if (chdir(pr[1]) != 0)
-			perror("./shell:");
+			perror("./hsh:");
 	}
 	return (1);
 }

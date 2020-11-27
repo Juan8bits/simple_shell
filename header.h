@@ -12,6 +12,7 @@
 #include <fcntl.h>
 #include <errno.h>
 
+
 void sig_handler(int sig_c);
 
 /* Structure for function pointers to Built-in commands*/
@@ -47,6 +48,8 @@ char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 char **get_pointers_array(char *line, char *limit);
 char *_pathcat(char *argument, char *route);
+int _putchar(char c);
+void _puts(char *str);
 
 /* Create and execute new process */
 int new_process(char **argument);
