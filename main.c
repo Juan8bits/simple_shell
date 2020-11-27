@@ -20,25 +20,28 @@ void sig_handler(int sig_c)
 
 char **get_pointers_array(char *line, char *limit)
 {
-	int i;/*Runer*/
-	int contsp = 0;/*Counter limit*/
+	int i,j;/*Runer*/
+	int contdelim = 0;/*Counter limit*/
 	char **array = NULL;
 
 /*Count limit char*/
 	for (i = 0; line[i] && line; i++)
 	{
-		if (line[i] == limit[0])
-			contsp++;
+		for(j = 0; limit[j]; j++)
+		{
+			if (line[i] == limit[j])
+				contdelim++;
+		}
 	}
 /*Allocate memory*/
-	array = malloc(sizeof(char *) * (contsp + 2));
+	array = malloc(sizeof(char *) * (contdelim + 2));
 	if (!array)
 	{
 		return (NULL);
 	}
 /*Full array*/
 	array[0] = strtok(line, limit);
-	for (i = 1; i <= contsp; i++)
+	for (i = 1; i <= contdelim; i++)
 	{
 		array[i] = strtok(NULL, limit);
 	}
@@ -89,5 +92,5 @@ int main(void)
 		}
 	}
 	free(line);
-	return (EXIT_SUCCESS);
+	return (98);
 }
