@@ -20,14 +20,14 @@ void sig_handler(int sig_c)
 
 char **get_pointers_array(char *line, char *limit)
 {
-	int i,j;/*Runer*/
+	int i, j;/*Runer*/
 	int contdelim = 0;/*Counter limit*/
 	char **array = NULL;
 
 /*Count limit char*/
 	for (i = 0; line[i] && line; i++)
 	{
-		for(j = 0; limit[j]; j++)
+		for (j = 0; limit[j]; j++)
 		{
 			if (line[i] == limit[j])
 				contdelim++;
@@ -92,5 +92,5 @@ int main(void)
 		}
 	}
 	free(line);
-	return (98);
+	return (0);
 }
