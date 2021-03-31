@@ -113,7 +113,7 @@ Juan Manuel Ramírez Saa <Juan160820@gmail.com>
 
 Simple Shell was built and tested in the Ubuntu 14.04 LTS via Vagrant in VirtualBox and compiled with GCC version 4.8.4
 
-:open_book: [Blog about command ls -l](https://discord.com/channels/@me/759092210057871420/781310853340200970)
+:open_book: [Blog about command ls -l](https://2418.medium.com/inside-shell-a-little-journey-through-the-ls-l-command-863370f06e21)
 
 ## **Authors:writing_hand:** 
 
